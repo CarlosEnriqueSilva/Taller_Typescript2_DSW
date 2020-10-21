@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1>Carlos Enrique Silva Lascarro</h1>
+          <h1 id="nombreEstudiante"></h1>
           <img
             class="img-fluid max-width: 100% height: auto"
             src="imagenes/avatar.jpg"
@@ -31,28 +31,7 @@
                   <th>Info</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Código</td>
-                  <td>201821974</td>
-                </tr>
-                <tr>
-                  <td>Cédula</td>
-                  <td>1010000000</td>
-                </tr>
-                <tr>
-                  <td>Edad</td>
-                  <td>20 Años</td>
-                </tr>
-                <tr>
-                  <td>Dirección</td>
-                  <td>Carrera 56A #130A-86</td>
-                </tr>
-                <tr>
-                  <td>Teléfono</td>
-                  <td>7485192</td>
-                </tr>
-              </tbody>
+              <tbody id="studentInfo"></tbody>
             </table>
           </div>
         </div>
@@ -78,6 +57,32 @@
                   </button>
                 </div>
               </div>
+              <div class="form-row py-3">
+                <div class="col">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="minCreditos"
+                    placeholder="Min Créditos"
+                  />
+                </div>
+                <div class="col">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="maxCreditos"
+                    placeholder="Max Créditos"
+                  />
+                </div>
+                <div class="col">
+                  <button
+                  type="button"
+                  id="button-filterByCredits"
+                  class="btn btn-success"
+                >
+                Aplicar
+                </div>
+              </div>
             </form>
             <h2 class="card-header">Cursos Actuales</h2>
             <table class="card-table table">
@@ -99,6 +104,8 @@
     </div>
     <script type="module" src="./scripts/course.js"></script>
     <script type="module" src="./scripts/dataCourses.js"></script>
+    <script type="module" src="./scripts/student.js"></script>
+    <script type="module" src="./scripts/dataStudent.js"></script>
     <script type="module" src="./scripts/main.js"></script>
   </body>
 </html>
