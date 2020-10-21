@@ -1,11 +1,8 @@
-import { dataCourses } from "./dataCourses";
+import { dataCourses } from './dataCourses.js';
 var coursesTbody = document.getElementById('courses'); // Nodo tbody que tiene el id="courses"
-var creditsTbody = document.getElementById('totalCreditos');
-var btnfilterByName = document.getElementById('button-filterByName');
+var creditsTBody = document.getElementById('totalCreditos');
 var inputSearchBox = document.getElementById('search-box');
-renderCoursesInTable(dataCourses);
-console.log(dataCourses);
-btnfilterByName.onclick = function () { return applyFilterByName(); };
+var btnfilterByName = document.getElementById('button-filterByName');
 function renderCoursesInTable(courses) {
     courses.forEach(function (c) {
         var trElement = document.createElement("tr");
@@ -18,12 +15,16 @@ function getTotalCredits(courses) {
     courses.forEach(function (course) { return totalCredits = totalCredits + course.credits; });
     return totalCredits;
 }
+function escribirTotalCreditos(courses) {
+    creditsTBody.innerHTML = "<strong>Total Créditos: </strong>" + getTotalCredits(courses);
+}
 function applyFilterByName() {
-    var text = inputSearchBox.nodeValue;
+    var text = inputSearchBox.value;
     text = (text == null) ? '' : text;
     clearCoursesInTable();
     var coursesFiltered = searchCourseByName(text, dataCourses);
     renderCoursesInTable(coursesFiltered);
+    escribirTotalCreditos(coursesFiltered);
 }
 function searchCourseByName(nameKey, courses) {
     return nameKey === '' ? dataCourses : courses.filter(function (c) {
@@ -31,9 +32,8 @@ function searchCourseByName(nameKey, courses) {
     });
 }
 function clearCoursesInTable() {
-    var nodes = coursesTbody.childNodes;
-    var nods;
-    for (nods in nodes) {
-        coursesTbody.removeChild;
-    }
+    coursesTbody.innerHTML = "";
 }
+btnfilterByName.onclick = function () { return applyFilterByName(); };
+renderCoursesInTable(dataCourses);
+escribirTotalCreditos(dataCourses);
